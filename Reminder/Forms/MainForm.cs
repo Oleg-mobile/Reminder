@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using Reminder.Forms;
+﻿using Reminder.Forms;
 using Reminder.Models;
 using System;
 using System.Collections.Generic;

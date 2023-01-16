@@ -16,10 +16,12 @@ namespace Reminder
 
             form.dataGridViewTasks.DataSource = bindingList;
 
-            form.dataGridViewTasks.Columns[0].HeaderText = "Название";
-            form.dataGridViewTasks.Columns[1].HeaderText = "Время";
-            //form.dataGridViewTasks.Columns[1].DefaultCellStyle.Format = "HH:mm";
-            form.dataGridViewTasks.Columns[2].HeaderText = "Комментарий";
+            form.dataGridViewTasks.Columns[0].HeaderText = "Id";
+            form.dataGridViewTasks.Columns[0].Visible = false;
+            form.dataGridViewTasks.Columns[1].HeaderText = "Название";
+            form.dataGridViewTasks.Columns[2].HeaderText = "Время";
+            //form.dataGridViewTasks.Columns[2].DefaultCellStyle.Format = "HH:mm";
+            form.dataGridViewTasks.Columns[3].HeaderText = "Комментарий";
         }
 
         public static void UpdateFile(string pathToFile, List<ReminderTask> list)

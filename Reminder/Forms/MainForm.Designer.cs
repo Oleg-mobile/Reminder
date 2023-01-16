@@ -43,9 +43,10 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(12, 124);
+            this.buttonAdd.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonAdd.Location = new System.Drawing.Point(0, 118);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(161, 44);
+            this.buttonAdd.Size = new System.Drawing.Size(190, 45);
             this.buttonAdd.TabIndex = 0;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -53,9 +54,10 @@
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(12, 186);
+            this.buttonEdit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonEdit.Location = new System.Drawing.Point(0, 163);
             this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(161, 41);
+            this.buttonEdit.Size = new System.Drawing.Size(190, 45);
             this.buttonEdit.TabIndex = 1;
             this.buttonEdit.Text = "Изменить";
             this.buttonEdit.UseVisualStyleBackColor = true;
@@ -63,9 +65,10 @@
             // 
             // buttonDell
             // 
-            this.buttonDell.Location = new System.Drawing.Point(12, 246);
+            this.buttonDell.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonDell.Location = new System.Drawing.Point(0, 208);
             this.buttonDell.Name = "buttonDell";
-            this.buttonDell.Size = new System.Drawing.Size(161, 42);
+            this.buttonDell.Size = new System.Drawing.Size(190, 45);
             this.buttonDell.TabIndex = 2;
             this.buttonDell.Text = "Удалить";
             this.buttonDell.UseVisualStyleBackColor = true;
@@ -77,11 +80,11 @@
             this.dataGridViewTasks.AllowUserToDeleteRows = false;
             this.dataGridViewTasks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTasks.Location = new System.Drawing.Point(329, 124);
+            this.dataGridViewTasks.Location = new System.Drawing.Point(238, 124);
             this.dataGridViewTasks.Name = "dataGridViewTasks";
             this.dataGridViewTasks.ReadOnly = true;
             this.dataGridViewTasks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTasks.Size = new System.Drawing.Size(350, 299);
+            this.dataGridViewTasks.Size = new System.Drawing.Size(659, 299);
             this.dataGridViewTasks.TabIndex = 3;
             this.dataGridViewTasks.DoubleClick += new System.EventHandler(this.buttonEdit_Click);
             // 
@@ -94,10 +97,10 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Controls.Add(this.buttonDell);
-            this.panelMenu.Controls.Add(this.buttonAdd);
             this.panelMenu.Controls.Add(this.buttonEdit);
+            this.panelMenu.Controls.Add(this.buttonAdd);
+            this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
@@ -110,13 +113,13 @@
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(190, 118);
-            this.panelLogo.TabIndex = 3;
+            this.panelLogo.TabIndex = 1;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(937, 450);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.dataGridViewTasks);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
