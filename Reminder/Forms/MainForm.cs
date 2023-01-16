@@ -21,27 +21,9 @@ namespace Reminder
 
             timerMain.Start();
 
-            // TODO вынести в Utils? Как быть с try-catch
             // TODO куда это убрать из конструктора?
-            if (File.Exists(_pathToFile))
-            {
-                if (new FileInfo(_pathToFile).Length > 0)
-                {
-                    try
-                    {
-                        tasksList = JsonConvert.DeserializeObject<List<ReminderTask>>(File.ReadAllText(_pathToFile));
-                        Utils.RefrashTable(this, tasksList);
-                    }
-                    catch (JsonReaderException)
-                    {
-                        Utils.ShowMessage($"Ошибка чтения файла {_pathToFile}");
-                    }
-                    catch (JsonSerializationException)
-                    {
-                        Utils.ShowMessage($"Не корректный файл {_pathToFile}");
-                    }
-                }
-            }
+            Utils.InitTasks(_pathToFile, tasksList);
+            Utils.RefrashTable(this, tasksList);
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Reminder.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -34,6 +35,24 @@ namespace Reminder
         public static void ShowMessage(string message)
         {
             MessageBox.Show(message);
+        }
+
+        public static void InitTasks(string pathToFile, List<ReminderTask> list)
+        {
+            if (File.Exists(pathToFile))
+            {
+                if (new FileInfo(pathToFile).Length > 0)
+                {
+                    try
+                    {
+                        list = JsonConvert.DeserializeObject<List<ReminderTask>>(File.ReadAllText(pathToFile));
+                    }
+                    catch (Exception)
+                    {
+                        ShowMessage($"Произошла ошибка");
+                    }
+                }
+            }
         }
     }
 }

@@ -1,8 +1,6 @@
-﻿using Newtonsoft.Json;
-using Reminder.Models;
+﻿using Reminder.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Windows.Forms;
 
 namespace Reminder.Forms
@@ -21,30 +19,11 @@ namespace Reminder.Forms
             _pathToFile = pathToFile;
             _mainForm = mainForm;
 
-            // TODO код как на главной форме
-            if (File.Exists(_pathToFile))
-            {
-                if (new FileInfo(_pathToFile).Length > 0)
-                {
-                    try
-                    {
-                        myTasks = JsonConvert.DeserializeObject<List<ReminderTask>>(File.ReadAllText(_pathToFile));
-                    }
-                    catch (JsonReaderException)
-                    {
-                        Utils.ShowMessage($"Ошибка чтения файла {_pathToFile}");
-                    }
-                    catch (JsonSerializationException)
-                    {
-                        Utils.ShowMessage($"Не корректный файл {_pathToFile}");
-                    }
-                }
-            }
+            Utils.InitTasks(_pathToFile, myTasks);
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            // TODO что делать с отработанным уведомлением? Удалить?
             Close();
         }
 
@@ -52,11 +31,7 @@ namespace Reminder.Forms
         {
             Close();
 
-            //int index = myTasks.FindIndex(i => i.Name == _task.Name);
-
             _task.Time = DateTime.Now.AddMinutes(1);
-
-            //myTasks[index] = _task;
 
             Utils.RefrashTable(_mainForm, myTasks);
             Utils.UpdateFile(_pathToFile, myTasks);
@@ -65,8 +40,6 @@ namespace Reminder.Forms
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             Close();
-            // TODO нужен id? По объекту не видит
-            //int index = myTasks.FindIndex(i => i.Name == _task.Name);
 
             var taskForm = new TaskForm(_task);
 
@@ -74,7 +47,6 @@ namespace Reminder.Forms
 
             if (result == DialogResult.Cancel) return;
 
-            //myTasks[index] = taskForm.GetTask();
             taskForm.UpdateTask(_task);
 
             Utils.RefrashTable(_mainForm, myTasks);

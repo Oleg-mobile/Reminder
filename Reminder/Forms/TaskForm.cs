@@ -1,6 +1,5 @@
 ﻿using Reminder.Models;
 using System;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Reminder.Forms
@@ -20,7 +19,7 @@ namespace Reminder.Forms
         {
             DateTime date = DateTime.Now.Date.Add(new TimeSpan(task.Time.Hour, task.Time.Minute, 0));  // Текущая дата и время из заявки
 
-            monthCalendarTask.BoldedDates = new DateTime[] {task.Time};  // Выделяем дату события
+            monthCalendarTask.BoldedDates = new DateTime[] { task.Time };  // Выделяем дату события
             textBoxName.Text = task.Name;
             dateTimePickerTask.Value = date;
             textBoxComment.Text = task.Comment;
