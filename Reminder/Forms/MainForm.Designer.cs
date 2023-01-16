@@ -77,7 +77,7 @@
             this.dataGridViewTasks.AllowUserToDeleteRows = false;
             this.dataGridViewTasks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTasks.Location = new System.Drawing.Point(391, 105);
+            this.dataGridViewTasks.Location = new System.Drawing.Point(329, 124);
             this.dataGridViewTasks.Name = "dataGridViewTasks";
             this.dataGridViewTasks.ReadOnly = true;
             this.dataGridViewTasks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
