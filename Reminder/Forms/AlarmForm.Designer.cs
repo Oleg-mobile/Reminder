@@ -85,7 +85,7 @@
             this.Controls.Add(this.labelComment);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AlarmForm";
-            this.Text = "Напоминалка / Уведомление";
+            this.Text = "Уведомление";
             this.ResumeLayout(false);
             this.PerformLayout();
 

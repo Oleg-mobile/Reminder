@@ -42,14 +42,16 @@
             this.labelLogo = new System.Windows.Forms.Label();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.panelTitleBar = new System.Windows.Forms.Panel();
-            this.iconPictureBoxFormIcon = new FontAwesome.Sharp.IconPictureBox();
             this.labelFormName = new System.Windows.Forms.Label();
+            this.iconPictureBoxFormIcon = new FontAwesome.Sharp.IconPictureBox();
+            this.panelDesktop = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTasks)).BeginInit();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBoxFormIcon)).BeginInit();
+            this.panelDesktop.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewTasks
@@ -58,11 +60,11 @@
             this.dataGridViewTasks.AllowUserToDeleteRows = false;
             this.dataGridViewTasks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTasks.Location = new System.Drawing.Point(256, 118);
+            this.dataGridViewTasks.Location = new System.Drawing.Point(48, 37);
             this.dataGridViewTasks.Name = "dataGridViewTasks";
             this.dataGridViewTasks.ReadOnly = true;
             this.dataGridViewTasks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTasks.Size = new System.Drawing.Size(646, 299);
+            this.dataGridViewTasks.Size = new System.Drawing.Size(619, 311);
             this.dataGridViewTasks.TabIndex = 3;
             // 
             // timerMain
@@ -244,6 +246,17 @@
             this.panelTitleBar.Size = new System.Drawing.Size(717, 58);
             this.panelTitleBar.TabIndex = 5;
             // 
+            // labelFormName
+            // 
+            this.labelFormName.AutoSize = true;
+            this.labelFormName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFormName.ForeColor = System.Drawing.Color.Gainsboro;
+            this.labelFormName.Location = new System.Drawing.Point(53, 21);
+            this.labelFormName.Name = "labelFormName";
+            this.labelFormName.Size = new System.Drawing.Size(148, 17);
+            this.labelFormName.TabIndex = 1;
+            this.labelFormName.Text = "Список напоминаний";
+            // 
             // iconPictureBoxFormIcon
             // 
             this.iconPictureBoxFormIcon.BackColor = System.Drawing.Color.DarkSlateBlue;
@@ -258,25 +271,24 @@
             this.iconPictureBoxFormIcon.TabIndex = 0;
             this.iconPictureBoxFormIcon.TabStop = false;
             // 
-            // labelFormName
+            // panelDesktop
             // 
-            this.labelFormName.AutoSize = true;
-            this.labelFormName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelFormName.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelFormName.Location = new System.Drawing.Point(53, 21);
-            this.labelFormName.Name = "labelFormName";
-            this.labelFormName.Size = new System.Drawing.Size(147, 17);
-            this.labelFormName.TabIndex = 1;
-            this.labelFormName.Text = "Начальная страница";
+            this.panelDesktop.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.panelDesktop.Controls.Add(this.dataGridViewTasks);
+            this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDesktop.Location = new System.Drawing.Point(220, 58);
+            this.panelDesktop.Name = "panelDesktop";
+            this.panelDesktop.Size = new System.Drawing.Size(717, 390);
+            this.panelDesktop.TabIndex = 7;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 448);
+            this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
-            this.Controls.Add(this.dataGridViewTasks);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Напоминалка";
@@ -288,6 +300,7 @@
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBoxFormIcon)).EndInit();
+            this.panelDesktop.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -307,6 +320,7 @@
         private FontAwesome.Sharp.IconButton iconButtonAdd;
         private FontAwesome.Sharp.IconPictureBox iconPictureBoxFormIcon;
         private System.Windows.Forms.Label labelFormName;
+        private System.Windows.Forms.Panel panelDesktop;
     }
 }
 

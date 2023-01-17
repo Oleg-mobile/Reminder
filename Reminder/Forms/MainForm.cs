@@ -19,6 +19,7 @@ namespace Reminder
         // Поля
         private IconButton currentButton;
         private Panel leftBorderButton;
+        private Form currentChildForm;
 
         public MainForm()
         {
@@ -88,7 +89,26 @@ namespace Reminder
             leftBorderButton.Visible = false;
             iconPictureBoxFormIcon.IconChar = IconChar.Home;
             iconPictureBoxFormIcon.IconColor = Color.SandyBrown;
-            labelFormName.Text = "Начальная страница";
+            labelFormName.Text = "Список напоминаний";
+        }
+
+        private Form OpenChildForm(Form childForm)
+        {
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
+
+            currentChildForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle= FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelDesktop.Controls.Add(childForm);
+            panelDesktop.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+            labelFormName.Text = childForm.Text;
+            return childForm;
         }
 
         private void timerMain_Tick(object sender, EventArgs e)
@@ -110,10 +130,12 @@ namespace Reminder
         {
             ActivateButton(sender, ButtonsColors.colorBtnAdd);
 
-            var taskForm = new TaskForm();
-            DialogResult result = taskForm.ShowDialog();
+            //var taskForm = new TaskForm();
+            //DialogResult result = taskForm.ShowDialog();
 
-            if (result == DialogResult.Cancel) return;
+            TaskForm taskForm = (TaskForm)OpenChildForm(new TaskForm());
+
+            //if (result == DialogResult.Cancel) return;
 
             tasksList.Add(taskForm.GetTask());
 
@@ -136,10 +158,12 @@ namespace Reminder
                 var task = (ReminderTask)dataGridViewTasks.SelectedRows[0].DataBoundItem;
                 int index = tasksList.FindIndex(i => i == task);
 
-                var taskForm = new TaskForm(task);
-                DialogResult result = taskForm.ShowDialog();
+                //var taskForm = new TaskForm(task);
+                //DialogResult result = taskForm.ShowDialog();
 
-                if (result == DialogResult.Cancel) return;
+                //if (result == DialogResult.Cancel) return;
+
+                TaskForm taskForm = (TaskForm)OpenChildForm(new TaskForm());
 
                 tasksList[index] = taskForm.GetTask();
 
@@ -166,7 +190,7 @@ namespace Reminder
         {
             ActivateButton(sender, ButtonsColors.colorBtnAdd);
 
-
+            SettingsForm setForm = (SettingsForm)OpenChildForm(new SettingsForm());
         }
 
         private void iconButtonExit_Click(object sender, EventArgs e)
@@ -176,6 +200,11 @@ namespace Reminder
 
         private void pictureBoxLogo_Click(object sender, EventArgs e)
         {
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
+
             Reset();
         }
     }

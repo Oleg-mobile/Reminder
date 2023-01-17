@@ -103,7 +103,7 @@
             // 
             // monthCalendarTask
             // 
-            this.monthCalendarTask.Location = new System.Drawing.Point(618, 18);
+            this.monthCalendarTask.Location = new System.Drawing.Point(482, 25);
             this.monthCalendarTask.Name = "monthCalendarTask";
             this.monthCalendarTask.TabIndex = 8;
             // 
@@ -111,7 +111,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(679, 333);
             this.Controls.Add(this.monthCalendarTask);
             this.Controls.Add(this.dateTimePickerTask);
             this.Controls.Add(this.buttonAdd);
@@ -122,7 +122,7 @@
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TaskForm";
-            this.Text = "Напоминалка / Задача";
+            this.Text = "Напоминание";
             this.ResumeLayout(false);
             this.PerformLayout();
 
