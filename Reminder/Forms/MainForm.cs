@@ -12,9 +12,8 @@ namespace Reminder
 {
     public partial class MainForm : Form
     {
-        // TODO Где лучше хранить файл?
         private readonly string _pathToFile = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Tasks.json");
-        private List<ReminderTask> tasksList = new List<ReminderTask>(); // TODO а если без new List<MyTask>()?
+        private readonly List<ReminderTask> _tasksList = new List<ReminderTask>();
 
         // Поля
         private IconButton currentButton;
@@ -31,9 +30,9 @@ namespace Reminder
 
             timerMain.Start();
 
-            // TODO куда это убрать из конструктора?
-            Utils.InitTasks(_pathToFile, tasksList);
-            Utils.RefrashTable(this, tasksList);
+            // TODO убрать из конструктора
+            Utils.InitTasks(_pathToFile, _tasksList);
+            Utils.RefrashTable(this, _tasksList);
         }
 
         // Цвета для кнопок
@@ -113,11 +112,9 @@ namespace Reminder
 
         private void timerMain_Tick(object sender, EventArgs e)
         {
-            foreach (var task in tasksList)
+            foreach (var task in _tasksList)
             {
-                // TODO не сравнивает даты
                 if (task.Time.ToString() == DateTime.Now.ToString())
-                //if (DateTime.Compare(task.Time, DateTime.Now) == 0)
                 {
                     var alarmForm = new AlarmForm(task, _pathToFile, this);
                     alarmForm.Show();
@@ -137,16 +134,16 @@ namespace Reminder
 
             //if (result == DialogResult.Cancel) return;
 
-            tasksList.Add(taskForm.GetTask());
+            _tasksList.Add(taskForm.GetTask());
 
-            Utils.RefrashTable(this, tasksList);
+            Utils.RefrashTable(this, _tasksList);
 
             if (!File.Exists(_pathToFile))
             {
                 File.WriteAllText(_pathToFile, string.Empty);
             }
 
-            Utils.UpdateFile(_pathToFile, tasksList);
+            Utils.UpdateFile(_pathToFile, _tasksList);
         }
 
         private void iconButtonEdit_Click(object sender, EventArgs e)
@@ -156,7 +153,7 @@ namespace Reminder
             if (dataGridViewTasks.SelectedRows.Count > 0)
             {
                 var task = (ReminderTask)dataGridViewTasks.SelectedRows[0].DataBoundItem;
-                int index = tasksList.FindIndex(i => i == task);
+                int index = _tasksList.FindIndex(i => i == task);
 
                 //var taskForm = new TaskForm(task);
                 //DialogResult result = taskForm.ShowDialog();
@@ -165,10 +162,10 @@ namespace Reminder
 
                 TaskForm taskForm = (TaskForm)OpenChildForm(new TaskForm());
 
-                tasksList[index] = taskForm.GetTask();
+                _tasksList[index] = taskForm.GetTask();
 
-                Utils.RefrashTable(this, tasksList);
-                Utils.UpdateFile(_pathToFile, tasksList);
+                Utils.RefrashTable(this, _tasksList);
+                Utils.UpdateFile(_pathToFile, _tasksList);
             }
         }
 
@@ -179,11 +176,11 @@ namespace Reminder
             for (int i = 0; i < dataGridViewTasks.SelectedRows.Count; i++)
             {
                 var task = (ReminderTask)dataGridViewTasks.SelectedRows[i].DataBoundItem;
-                tasksList.Remove(task);
+                _tasksList.Remove(task);
             }
 
-            Utils.RefrashTable(this, tasksList);
-            Utils.UpdateFile(_pathToFile, tasksList);
+            Utils.RefrashTable(this, _tasksList);
+            Utils.UpdateFile(_pathToFile, _tasksList);
         }
 
         private void iconButtonSettings_Click(object sender, EventArgs e)
